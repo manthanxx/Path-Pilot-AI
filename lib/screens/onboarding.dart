@@ -77,6 +77,7 @@ class _OnboardingState extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final List<String> images1 = ["assets/images/img9.jpg", "assets/images/img14.jpg", "assets/images/img6.jpg", "assets/images/img12.jpg"];
     final List<String> images2 = ["assets/images/img3.jpg", "assets/images/img4.jpg", "assets/images/img7.jpg", "assets/images/img11.jpg"];
     final List<String> images3 = ["assets/images/img5.jpg", "assets/images/img10.jpg", "assets/images/img13.jpg", "assets/images/img8.jpg"];
@@ -84,164 +85,178 @@ class _OnboardingState extends State<Onboarding> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 40),
-            Row(
-              children: [
-                const Text(
-                  "  Welcome to",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const Text(
-                  " Path Pilot",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.blueAccent,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            const SizedBox(height: 5),
-            const Row(
-              children: [
-                const Text(
-                  "  Your personal career compass",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.blueGrey,
-                    fontStyle: FontStyle.italic,
-                  ),),
-            ],),
-            const SizedBox(height: 30),
-            // Image Scrolling Section
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
-                child: Column(
-                  children: [
-                    _buildScrollingRow(_scrollController1, images1),
-                    const SizedBox(height: 15),
-                    _buildScrollingRow(_scrollController2, images2),
-                    const SizedBox(height: 15),
-                    _buildScrollingRow(_scrollController3, images3),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                children: [
-                  Text("Login or Sign up", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.blueAccent),),
-                  const SizedBox(height: 20),
-                  TextField(
-                    maxLength: 10,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      prefixText: "+91 ",
-                      hintText: "00000-00000",
-                      prefixIcon: const Icon(Icons.phone_android, color: Colors.blueAccent),
-                      filled: true,
-                      fillColor: Colors.grey[100],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shadowColor: Colors.black,
-                        elevation: 5,
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: IntrinsicHeight(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 40),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          children: [
+                            const Text(
+                              "Welcome to ",
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            const Text(
+                              "Path Pilot",
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blueAccent,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Get Started",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(Icons.arrow_forward_rounded, size: 22),
-                        ],
+                      const SizedBox(height: 8),
+                      const Text(
+                        "Your personal career compass",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.blueGrey,
+                          fontStyle: FontStyle.italic,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 40),
+                      // Responsive Scrolling Section
+                      SizedBox(
+                        height: size.height * 0.45,
+                        child: Column(
+                          children: [
+                            Expanded(child: _buildScrollingRow(_scrollController1, images1)),
+                            const SizedBox(height: 12),
+                            Expanded(child: _buildScrollingRow(_scrollController2, images2)),
+                            const SizedBox(height: 12),
+                            Expanded(child: _buildScrollingRow(_scrollController3, images3)),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+                        child: Column(
+                          children: [
+                            const Text(
+                              "Login or Sign up",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.blueAccent,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            TextField(
+                              maxLength: 10,
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(Icons.phone_android, color: Colors.blueAccent),
+                                prefixText: "+91 ",
+                                prefixStyle: const TextStyle(fontWeight: FontWeight.w400, color: Colors.black87),
+                                hintText: "00000-00000",
+                                counterText: "",
+                                filled: true,
+                                fillColor: Colors.grey[100],
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: const BorderSide(color: Colors.blueAccent, width: 1.5),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(vertical: 18),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 55,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/login');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor: Colors.blueAccent,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Get Started",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Icon(Icons.arrow_forward_rounded, size: 22),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-            const SizedBox(height: 30),
-          ],
+            );
+          },
         ),
       ),
     );
   }
 
   Widget _buildScrollingRow(ScrollController controller, List<String> images) {
-    // Duplicate images to create a loop effect
-    final repeatedImages = [...images, ...images, ...images];
-    return SizedBox(
-      height: 120,
-      child: ListView.builder(
-        controller: controller,
-        scrollDirection: Axis.horizontal,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: repeatedImages.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: _buildImageContainer(repeatedImages[index], 160, 120),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildImageContainer(String assetPath, double width, double height) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        image: DecorationImage(
-          image: AssetImage(assetPath),
-          fit: BoxFit.cover,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
+    final repeatedImages = [...images, ...images, ...images, ...images];
+    return ListView.builder(
+      controller: controller,
+      scrollDirection: Axis.horizontal,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: repeatedImages.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6.0),
+          child: AspectRatio(
+            aspectRatio: 4 / 3,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: AssetImage(repeatedImages[index]),
+                  fit: BoxFit.cover,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

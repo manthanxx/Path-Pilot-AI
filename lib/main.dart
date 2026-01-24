@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'screens/onboarding.dart';
 import 'screens/login.dart';
 import 'screens/home.dart';
+import 'screens/setup_profile.dart';
+import 'screens/counseling_onbording.dart';
+import 'screens/counseling_phase1.dart';
+import 'screens/counseling_phase2.dart';
+import 'screens/counseling_phase3.dart';
+import 'screens/counseling_phase4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,20 +20,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData(
         fontFamily: 'CalSans',
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blueAccent,
         ),
+        useMaterial3: true,
       ),
-
       initialRoute: '/',
-
       routes: {
         '/': (context) => const Onboarding(),
         '/login': (context) => const Login(),
+        '/setup_profile': (context) => const SetupProfile(),
         '/home': (context) => const Home(),
+        '/counseling_onboarding': (context) => const CounselingOnboarding(),
+        '/counseling_phase1':(context) => const CounselingPhase1(),
+        '/counseling_phase2': (context) => const CounselingPhase2(),
+        '/counseling_phase3': (context) => const CounselingPhase3(),
+        '/counseling_phase4': (context) => const CounselingPhase4(),
       },
     );
   }
