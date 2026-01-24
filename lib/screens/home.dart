@@ -57,7 +57,7 @@ class Home extends StatelessWidget {
                 _buildQuickCard(
                   context,
                   "Career\nCounseling",
-                  Icons.psychology_outlined,
+                  Icons.psychology_rounded,
                   Colors.blue,
                   () => Navigator.pushNamed(context, '/counseling_onboarding'),
                 ),
@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
                 _buildQuickCard(
                   context,
                   "Explore\nCourses",
-                  Icons.menu_book_outlined,
+                  Icons.menu_book_rounded,
                   Colors.orange,
                   () {},
                 ),
@@ -73,7 +73,7 @@ class Home extends StatelessWidget {
                 _buildQuickCard(
                   context,
                   "Find\nColleges",
-                  Icons.school_outlined,
+                  Icons.school_rounded,
                   Colors.green,
                   () {},
                 ),

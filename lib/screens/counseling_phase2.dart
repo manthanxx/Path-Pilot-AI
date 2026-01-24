@@ -20,7 +20,7 @@ class _CounselingPhase2State extends State<CounselingPhase2> {
     "Government Jobs",
     "Design",
     "Research",
-    "Management"
+    "Management",
   ];
 
   @override

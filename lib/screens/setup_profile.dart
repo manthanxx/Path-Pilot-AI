@@ -10,9 +10,16 @@ class SetupProfile extends StatefulWidget {
 class _SetupProfileState extends State<SetupProfile> {
   String? selectedAge;
   String? selectedEducation;
+  String? selectedMark;
+  bool appearedExam = false;
 
-  final List<String> ageGroups = ['15', '16', '17', '18', '19', '20', '21', '22'];
+  final List<String> ageGroups = [
+    '15', '16', '17', '18', '19', '20', '21', '22',
+  ];
   final List<String> educationLevels = ['10th', '12th', 'Diploma'];
+  final List<String> marks = [
+    'Below 60', '60-70', '70-80', '80-90', '90-95', '95 & above',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,10 @@ class _SetupProfileState extends State<SetupProfile> {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black87),
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black87,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         centerTitle: true,
@@ -37,25 +47,48 @@ class _SetupProfileState extends State<SetupProfile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Let us know you a bit more", style: TextStyle(color: Colors.grey[600],fontSize:16, fontWeight: FontWeight.w400),),
+              const SizedBox(height: 8),
+              Text(
+                "Complete your profile to get the best career recommendations tailored for you.",
+                style: TextStyle(
+                  color: Colors.blueGrey.shade400,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5,
+                ),
+              ),
+              const SizedBox(height: 24),
               Center(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.20,
                   child: Image.asset(
-                    "assets/images/img15.jpg", // Using an existing image from your assets
+                    "assets/images/img15.jpg",
                     fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.account_circle, size: 120, color: Colors.blueAccent),
+                    errorBuilder: (context, error, stackTrace) => const Icon(
+                      Icons.account_circle,
+                      size: 120,
+                      color: Colors.blueAccent,
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 30),
-              
-              const Text("Full Name", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+
+              const Text(
+                "Full Name",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
               const SizedBox(height: 8),
-              _buildTextField(hint: "Enter your full name", icon: Icons.person_outline),
-              
+              _buildTextField(
+                hint: "Enter your full name",
+                icon: Icons.person_outline,
+              ),
+
               const SizedBox(height: 20),
-              const Text("Age", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+              const Text(
+                "Age",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
               const SizedBox(height: 8),
               _buildDropdown(
                 hint: "Select age",
@@ -64,9 +97,12 @@ class _SetupProfileState extends State<SetupProfile> {
                 items: ageGroups,
                 onChanged: (val) => setState(() => selectedAge = val),
               ),
-              
+
               const SizedBox(height: 20),
-              const Text("Education Level", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+              const Text(
+                "Education Level",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
               const SizedBox(height: 8),
               _buildDropdown(
                 hint: "Select education level",
@@ -75,32 +111,80 @@ class _SetupProfileState extends State<SetupProfile> {
                 items: educationLevels,
                 onChanged: (val) => setState(() => selectedEducation = val),
               ),
-              
+
+              const SizedBox(height: 10),
+              if(selectedEducation != null) ...[
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          "Appeared for competitive exam?",
+                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                        ),
+                      ),
+                      Switch(
+                        value: appearedExam,
+                        activeColor: Colors.blueAccent,
+                        onChanged: (val) {
+                          setState(() => appearedExam = val);
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ],
+              const SizedBox(height: 20),
+              const Text(
+                "Marks",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              _buildDropdown(
+                hint: "Select Marks",
+                icon: Icons.grade_rounded,
+                value: selectedMark,
+                items: marks,
+                onChanged: (val) => setState(() => selectedMark = val),
+              ),
+
               const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 height: 55,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/counseling_onboarding');
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/counseling_onboarding',
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Next", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(
+                        "Next",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       SizedBox(width: 8),
                       Icon(Icons.arrow_forward_rounded),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -154,7 +238,10 @@ class _SetupProfileState extends State<SetupProfile> {
         return DropdownMenuItem(value: item, child: Text(item));
       }).toList(),
       onChanged: onChanged,
-      icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.blueAccent),
+      icon: const Icon(
+        Icons.keyboard_arrow_down_rounded,
+        color: Colors.blueAccent,
+      ),
     );
   }
 }

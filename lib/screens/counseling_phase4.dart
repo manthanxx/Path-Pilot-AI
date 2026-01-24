@@ -14,6 +14,11 @@ class CounselingPhase4 extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black87),
           onPressed: () => Navigator.pop(context),
         ),
+        centerTitle: true,
+        title: const Text(
+          "Results",
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -22,6 +27,7 @@ class CounselingPhase4 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
+              // Progress Bar
               LinearProgressIndicator(
                 value: 1.0,
                 backgroundColor: Colors.grey.shade100,
@@ -31,7 +37,7 @@ class CounselingPhase4 extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                "Step 4 of 4",
+                "Step 4 of 4 - Complete",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -39,44 +45,55 @@ class CounselingPhase4 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
-              const Text(
-                "Recommended Paths",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Based on your profile, we recommend these career paths for you.",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.blueGrey.shade400,
-                ),
-              ),
-              const SizedBox(height: 30),
               Expanded(
                 child: ListView(
+                  physics: const BouncingScrollPhysics(),
                   children: [
+                    const Text(
+                      "Recommended Career Paths",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
                     _buildCareerCard(
-                      title: "Software Developer",
-                      desc: "Best for students interested in technology and problem solving.",
-                      icon: Icons.code_rounded,
-                      color: Colors.blue,
+                      "Software Developer",
+                      "Matches your interest in technology and problem solving.",
+                      Icons.code_rounded,
                     ),
                     _buildCareerCard(
-                      title: "Business Analyst",
-                      desc: "Suitable for analytical thinkers with a strong business interest.",
-                      icon: Icons.analytics_outlined,
-                      color: Colors.green,
+                      "UI/UX Designer",
+                      "Suitable for creative skills and design thinking.",
+                      Icons.design_services_rounded,
                     ),
-                    _buildCareerCard(
-                      title: "UI/UX Designer",
-                      desc: "Ideal for creative minds who enjoy designing intuitive experiences.",
-                      icon: Icons.design_services_outlined,
-                      color: Colors.orange,
+                    const SizedBox(height: 32),
+                    const Text(
+                      "Recommended Colleges",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
                     ),
+                    const SizedBox(height: 16),
+                    _buildCollegeCard(
+                      "COEP Pune",
+                      "Maharashtra | Engineering",
+                      Icons.account_balance_rounded,
+                    ),
+                    _buildCollegeCard(
+                      "VJTI Mumbai",
+                      "Maharashtra | Engineering",
+                      Icons.apartment_rounded,
+                    ),
+                    _buildCollegeCard(
+                      "SPIT Mumbai",
+                      "Maharashtra | Engineering",
+                      Icons.school_rounded,
+                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -92,10 +109,12 @@ class CounselingPhase4 extends StatelessWidget {
                     backgroundColor: Colors.blueAccent,
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
                   ),
                   child: const Text(
-                    "Explore Dashboard",
+                    "Go to Dashboard",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -108,30 +127,24 @@ class CounselingPhase4 extends StatelessWidget {
     );
   }
 
-  Widget _buildCareerCard({
-    required String title,
-    required String desc,
-    required IconData icon,
-    required Color color,
-  }) {
+  Widget _buildCareerCard(String title, String desc, IconData icon) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey.shade100),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.grey.shade200),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(14),
+              color: Colors.blueAccent.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, color: color, size: 28),
+            child: Icon(icon, color: Colors.blueAccent, size: 24),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -140,23 +153,46 @@ class CounselingPhase4 extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
+                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Text(
                   desc,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey.shade600,
-                    height: 1.4,
-                  ),
+                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCollegeCard(String name, String details, IconData icon) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: Colors.blue.shade50.withOpacity(0.5),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.blueAccent.shade700, size: 28),
+          const SizedBox(width: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                details,
+                style: TextStyle(color: Colors.blueGrey.shade700, fontSize: 14),
+              ),
+            ],
           ),
         ],
       ),

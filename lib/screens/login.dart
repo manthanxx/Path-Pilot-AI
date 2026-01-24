@@ -7,11 +7,16 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: Colors.transparent,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black87),
+            onPressed: () => Navigator.pop(context),
+          ),
           centerTitle: true,
           title: const Text(
             "OTP Verification",
-            style: TextStyle(),
+            style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
           ),
         ),
         backgroundColor: Colors.white,
@@ -24,7 +29,7 @@ class Login extends StatelessWidget {
                 children: [
                   const SizedBox(height: 40),
                   const Icon(
-                    Icons.send_to_mobile_rounded,
+                    Icons.mark_email_read_outlined,
                     size: 100,
                     color: Colors.blueAccent,
                   ),
@@ -33,7 +38,7 @@ class Login extends StatelessWidget {
                     "OTP sent successfully",
                     style: TextStyle(
                       fontSize: 22,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
                   ),
@@ -46,12 +51,11 @@ class Login extends StatelessWidget {
                       color: Colors.blueGrey,
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 40),
                   TextField(
                     maxLength: 6,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24, letterSpacing: 10, fontWeight: FontWeight.w400
-                    ),
+                    style: const TextStyle(fontSize: 24, letterSpacing: 10, fontWeight: FontWeight.bold),
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       counterText: "",
@@ -76,8 +80,8 @@ class Login extends StatelessWidget {
                     height: 55,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigate to home after successful OTP
-                        Navigator.pushReplacementNamed(context, '/setup_profile');
+                        // Navigate to setup profile
+                        Navigator.pushNamed(context, '/setup_profile');
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
@@ -91,7 +95,7 @@ class Login extends StatelessWidget {
                         "Verify & Continue",
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -112,7 +116,7 @@ class Login extends StatelessWidget {
                           "Resend",
                           style: TextStyle(
                             color: Colors.blueAccent,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
