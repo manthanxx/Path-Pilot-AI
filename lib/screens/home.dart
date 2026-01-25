@@ -8,6 +8,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(onPressed: () => Navigator.pop(context) , icon: Icon(Icons.arrow_back_rounded, color: Colors.black87)),
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(

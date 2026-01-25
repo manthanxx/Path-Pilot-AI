@@ -130,7 +130,6 @@ class _OnboardingState extends State<Onboarding> {
                         ),
                       ),
                       const SizedBox(height: 40),
-                      // Responsive Scrolling Section
                       SizedBox(
                         height: size.height * 0.45,
                         child: Column(
@@ -164,7 +163,7 @@ class _OnboardingState extends State<Onboarding> {
                                 prefixIcon: const Icon(Icons.phone_android, color: Colors.blueAccent),
                                 prefixText: "+91 ",
                                 prefixStyle: const TextStyle(fontWeight: FontWeight.w400, color: Colors.black87),
-                                hintText: "00000-00000",
+                                hintText: "Enter your Number",
                                 counterText: "",
                                 filled: true,
                                 fillColor: Colors.grey[100],
