@@ -21,14 +21,21 @@ class Home extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications_none_rounded, color: Colors.black87),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/notification');
+            },
           ),
-          const Padding(
-            padding: EdgeInsets.only(right: 16.0),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
             child: CircleAvatar(
               radius: 18,
               backgroundColor: Colors.blueAccent,
-              child: Icon(Icons.person, color: Colors.white, size: 20),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile');
+                },
+                icon: const Icon(Icons.person_rounded, color: Colors.white, size: 20),
+              ),
             ),
           ),
         ],
@@ -51,7 +58,6 @@ class Home extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // Quick Actions Section
             Row(
               children: [
                 _buildQuickCard(
@@ -59,7 +65,7 @@ class Home extends StatelessWidget {
                   "Career\nCounseling",
                   Icons.psychology_rounded,
                   Colors.blue,
-                  () => Navigator.pushNamed(context, '/counseling_onboarding'),
+                      () => Navigator.pushNamed(context, '/counseling_onboarding'),
                 ),
                 const SizedBox(width: 12),
                 _buildQuickCard(
@@ -67,7 +73,7 @@ class Home extends StatelessWidget {
                   "Explore\nCourses",
                   Icons.menu_book_rounded,
                   Colors.orange,
-                  () {},
+                      () => Navigator.pushNamed(context, '/courses'),
                 ),
                 const SizedBox(width: 12),
                 _buildQuickCard(
@@ -75,25 +81,28 @@ class Home extends StatelessWidget {
                   "Find\nColleges",
                   Icons.school_rounded,
                   Colors.green,
-                  () {},
+                      () => Navigator.pushNamed(context, '/collages'),
                 ),
               ],
             ),
 
             const SizedBox(height: 35),
 
-            // Trending Courses Section
-            _buildSectionHeader("Trending Courses", "See all"),
+            _buildSectionHeader(
+              "Trending Courses",
+              "See all",
+              onTap: () => Navigator.pushNamed(context, '/courses'),
+            ),
             const SizedBox(height: 15),
             _buildHorizontalCourseList([
               {"title": "Data Science", "image": "assets/images/img3.jpg"},
               {"title": "UI/UX Design", "image": "assets/images/img4.jpg"},
               {"title": "AI & ML", "image": "assets/images/img5.jpg"},
+              {"title": "Litreature", "image": "assets/images/img6.jpg"},
             ]),
 
             const SizedBox(height: 35),
 
-            // Explore by Stream Section
             _buildSectionHeader("Explore by Stream", ""),
             const SizedBox(height: 10),
             _buildStreamCard("Science", "PCB, PCM & more", Icons.biotech_rounded, Colors.purple),
@@ -103,7 +112,11 @@ class Home extends StatelessWidget {
             const SizedBox(height: 35),
 
             // Top Colleges Section
-            _buildSectionHeader("Top Colleges", "See all"),
+            _buildSectionHeader(
+              "Top Colleges",
+              "See all",
+              onTap: () => Navigator.pushNamed(context, '/collages'),
+            ),
             const SizedBox(height: 15),
             _buildHorizontalCollegeList(["IIT Delhi", "BITS Pilani", "SRM University", "MIT"]),
             const SizedBox(height: 30),
@@ -140,13 +153,19 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionHeader(String title, String actionText) {
+  Widget _buildSectionHeader(String title, String actionText, {VoidCallback? onTap}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black87)),
         if (actionText.isNotEmpty)
-          Text(actionText, style: const TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.w600)),
+          GestureDetector(
+            onTap: onTap,
+            child: Text(
+              actionText,
+              style: const TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.w600),
+            ),
+          ),
       ],
     );
   }

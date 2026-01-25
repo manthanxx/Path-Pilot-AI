@@ -8,6 +8,11 @@ import 'screens/counseling_phase1.dart';
 import 'screens/counseling_phase2.dart';
 import 'screens/counseling_phase3.dart';
 import 'screens/counseling_phase4.dart';
+import 'screens/profile.dart';
+import 'screens/notification.dart';
+import 'screens/streams.dart';
+import 'screens/collages.dart';
+import 'screens/courses.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +43,11 @@ class MyApp extends StatelessWidget {
         '/counseling_phase2': (context) => const CounselingPhase2(),
         '/counseling_phase3': (context) => const CounselingPhase3(),
         '/counseling_phase4': (context) => const CounselingPhase4(),
+        '/profile': (context) => const Profile(),
+        '/notification': (context) => const NotificationScreen(),
+        '/streams': (context) => const Streams(),
+        '/collages': (context) => const Collages(),
+        '/courses': (context) => const Courses(),
       },
     );
   }
