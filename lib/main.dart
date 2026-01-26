@@ -11,8 +11,10 @@ import 'screens/counseling_phase4.dart';
 import 'screens/profile.dart';
 import 'screens/notification.dart';
 import 'screens/streams.dart';
-import 'screens/collages.dart';
+import 'screens/colleges.dart';
 import 'screens/courses.dart';
+import 'screens/splash_screen.dart';
+import 'screens/aichat_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +36,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const Onboarding(),
+        '/': (context) => const SplashScreen(),
+        '/onboarding': (context) => const Onboarding(),
         '/login': (context) => const Login(),
         '/setup_profile': (context) => const SetupProfile(),
         '/home': (context) => const Home(),
@@ -46,8 +49,9 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => const Profile(),
         '/notification': (context) => const NotificationScreen(),
         '/streams': (context) => const Streams(),
-        '/collages': (context) => const Collages(),
+        '/collages': (context) => const Colleges(),
         '/courses': (context) => const Courses(),
+        '/aichat_screen': (context) => const AichatScreen(),
       },
     );
   }

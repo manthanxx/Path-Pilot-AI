@@ -11,16 +11,58 @@ class _SetupProfileState extends State<SetupProfile> {
   String? selectedAge;
   String? selectedEducation;
   String? selectedMark;
+  String? selectedState;
   bool appearedExam = false;
 
   final List<String> ageGroups = [
-    '15', '16', '17', '18', '19', '20', '21', '22',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
   ];
   final List<String> educationLevels = ['10th', '12th', 'Diploma'];
   final List<String> marks = [
-    'Below 60', '60-70', '70-80', '80-90', '90-95', '95 & above',
+    'Below 60',
+    '60-70',
+    '70-80',
+    '80-90',
+    '90-95',
+    '95 & above',
   ];
-
+  final List<String> states = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,6 +142,19 @@ class _SetupProfileState extends State<SetupProfile> {
 
               const SizedBox(height: 20),
               const Text(
+                "Select your State",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              _buildDropdown(
+                hint: "Select State",
+                icon: Icons.location_on_rounded,
+                value: selectedState,
+                items: states,
+                onChanged: (val) => setState(() => selectedState = val),
+              ),
+              const SizedBox(height: 20),
+              const Text(
                 "Education Level",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
@@ -113,7 +168,7 @@ class _SetupProfileState extends State<SetupProfile> {
               ),
 
               const SizedBox(height: 10),
-              if(selectedEducation != null) ...[
+              if (selectedEducation != null) ...[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Row(
@@ -121,7 +176,10 @@ class _SetupProfileState extends State<SetupProfile> {
                       const Expanded(
                         child: Text(
                           "Appeared for competitive exam?",
-                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       Switch(
@@ -133,7 +191,7 @@ class _SetupProfileState extends State<SetupProfile> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
               const SizedBox(height: 20),
               const Text(
