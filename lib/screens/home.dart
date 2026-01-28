@@ -192,7 +192,7 @@ class Home extends StatelessWidget {
                       "Scholarships\nEligibility ",
                       Icons.money_rounded,
                       Colors.red,
-                      () {},
+                      () => Navigator.pushNamed(context, '/scholarship'),
                     ),
                     const SizedBox(width: 12),
                     _buildQuickCard(
@@ -200,7 +200,7 @@ class Home extends StatelessWidget {
                       "Competitive\nExam & Preps",
                       Icons.scale_rounded,
                       Colors.blueGrey,
-                      () {},
+                      () => Navigator.pushNamed(context, '/exams'),
                     ),
                     const SizedBox(width: 12),
                     _buildQuickCard(
@@ -262,7 +262,7 @@ class Home extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             _buildHorizontalCollegeList([
-              "UPL University of Sustainable Technology",
+              "BITS Pilani",
               "IIT Delhi",
               "PHCET",
               "IIT Bombay",

@@ -58,11 +58,11 @@ class Colleges extends StatelessWidget {
                 children: [
                   _collageCard(
                     context,
-                    "UPL University of Sustainable Technology",
+                    "BITS Pilani",
                     "Engineering & Technology",
-                    "https://upluniversity.ac.in/UploadedFiles/Slider_133972189149888260.jpg",
+                    "",
                     "4.8",
-                    "Bharuch, Gujarat",
+                    "Pilani, Rajasthan",
                   ),
                   _collageCard(
                     context,
