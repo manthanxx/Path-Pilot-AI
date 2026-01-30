@@ -17,7 +17,10 @@ import 'screens/splash_screen.dart';
 import 'screens/aichat_screen.dart';
 import 'screens/scholarship.dart';
 import 'screens/exams.dart';
-
+import 'screens/internship.dart';
+import 'screens/science.dart';
+import 'screens/commerce.dart';
+import 'screens/arts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,6 +60,10 @@ class MyApp extends StatelessWidget {
         '/aichat_screen': (context) => const AichatScreen(),
         '/scholarship': (context) => const Scholarship(),
         '/exams': (context) => const Exams(),
+        '/internship': (context) => const Internship(),
+        '/science': (context) => const Science(),
+        '/commerce': (context) => const Commerce(),
+        '/arts': (context) => const Arts(),
       },
     );
   }

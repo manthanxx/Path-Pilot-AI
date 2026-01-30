@@ -205,10 +205,10 @@ class Home extends StatelessWidget {
                     const SizedBox(width: 12),
                     _buildQuickCard(
                       context,
-                      "Job\nOpportunities",
+                      "Intership\nOpportunities",
                       Icons.work_rounded,
                       Colors.pink,
-                      () {},
+                      () => Navigator.pushNamed(context, '/internship'),
                     ),
                   ],
                 ),
@@ -235,22 +235,28 @@ class Home extends StatelessWidget {
             _buildSectionHeader("Explore by Stream", ""),
             const SizedBox(height: 10),
             _buildStreamCard(
+              context,
               "Science",
               "PCB, PCM & more",
               Icons.biotech_rounded,
               Colors.purple,
+              () => Navigator.pushNamed(context, '/science'),
             ),
             _buildStreamCard(
+              context,
               "Commerce",
               "Accounts, Finance",
               Icons.account_balance_wallet_rounded,
               Colors.blue,
+              () => Navigator.pushNamed(context, '/commerce'),
             ),
             _buildStreamCard(
+              context,
               "Arts",
               "History, Design",
               Icons.palette_rounded,
               Colors.orange,
+              () => Navigator.pushNamed(context, '/arts'),
             ),
 
             const SizedBox(height: 35),
@@ -396,60 +402,65 @@ class Home extends StatelessWidget {
   }
 
   Widget _buildStreamCard(
+    BuildContext context,
     String title,
     String subtitle,
     IconData icon,
     Color color,
+    VoidCallback onTap,
   ) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.grey.shade100),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.02),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Colors.grey.shade100),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             ),
-            child: Icon(icon, color: color, size: 24),
-          ),
-          const SizedBox(width: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: color, size: 24),
+            ),
+            const SizedBox(width: 15),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                subtitle,
-                style: TextStyle(fontSize: 13, color: Colors.grey.shade500),
-              ),
-            ],
-          ),
-          const Spacer(),
-          const Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 14,
-            color: Colors.grey,
-          ),
-        ],
+                Text(
+                  subtitle,
+                  style: TextStyle(fontSize: 13, color: Colors.grey.shade500),
+                ),
+              ],
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 14,
+              color: Colors.grey,
+            ),
+          ],
+        ),
       ),
     );
   }
