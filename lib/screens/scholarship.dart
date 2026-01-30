@@ -13,28 +13,28 @@ class _ScholarshipState extends State<Scholarship> {
       "name": "Reliance Foundation",
       "type": "Private Company",
       "amount": "Up to ₹2,00,000",
-      "deadline": "30 Oct 2024",
+      "deadline": "10 Feb 2026",
       "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Reliance_Industries_Logo.svg/1200px-Reliance_Industries_Logo.svg.png"
     },
     {
       "name": "National Scholarship (NSP)",
       "type": "Government",
       "amount": "Full Tuition Fee",
-      "deadline": "15 Nov 2024",
+      "deadline": "15 Feb 2026",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0N-O3iJ7l_3T_mY4M6G-W_G9V9S-F1XQ5vA&s"
     },
     {
       "name": "Tata Capital Pankh",
       "type": "Private Company",
       "amount": "₹50,000",
-      "deadline": "20 Dec 2024",
+      "deadline": "22 Mar 2026",
       "logo": "https://www.tatacapital.com/content/dam/tata-capital/logos/tata-logo.png"
     },
     {
       "name": "HDFC Badhte Kadam",
       "type": "CSR Initiative",
       "amount": "₹1,00,000",
-      "deadline": "10 Jan 2025",
+      "deadline": "10 Mar 2026",
       "logo": "https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-2dde-42a3-9793-7ae1be57c87f/648b7f8c-4f7d-4c3e-9092-7f7e2d939c32?"
     },
   ];

@@ -27,8 +27,7 @@ class _AichatScreenState extends State<AichatScreen> {
         "time": TimeOfDay.now().format(context),
       });
       _messageController.clear();
-      
-      // Simulate AI response
+
       Future.delayed(const Duration(seconds: 1), () {
         if (mounted) {
           setState(() {
@@ -79,7 +78,7 @@ class _AichatScreenState extends State<AichatScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.black87),
-            onPressed: () {},
+            onPressed: (){},
           ),
         ],
       ),
@@ -198,7 +197,7 @@ class _AichatScreenState extends State<AichatScreen> {
                 child: const Icon(
                   Icons.send_rounded,
                   color: Colors.white,
-                  size: 20,
+                  size: 22,
                 ),
               ),
             ),

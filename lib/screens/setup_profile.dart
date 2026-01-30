@@ -13,6 +13,7 @@ class _SetupProfileState extends State<SetupProfile> {
   String? selectedMark;
   String? selectedState;
   bool appearedExam = false;
+  String? selectedExam;
 
   final List<String> ageGroups = [
     '15',
@@ -120,17 +121,20 @@ class _SetupProfileState extends State<SetupProfile> {
                 "Full Name",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
+
               const SizedBox(height: 8),
               _buildTextField(
                 hint: "Enter your full name",
-                icon: Icons.person_outline,
+                icon: Icons.person_rounded,
               ),
 
               const SizedBox(height: 20),
+
               const Text(
                 "Age",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
+
               const SizedBox(height: 8),
               _buildDropdown(
                 hint: "Select age",
@@ -141,11 +145,14 @@ class _SetupProfileState extends State<SetupProfile> {
               ),
 
               const SizedBox(height: 20),
+
               const Text(
                 "Select your State",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
+
               const SizedBox(height: 8),
+
               _buildDropdown(
                 hint: "Select State",
                 icon: Icons.location_on_rounded,
@@ -154,10 +161,12 @@ class _SetupProfileState extends State<SetupProfile> {
                 onChanged: (val) => setState(() => selectedState = val),
               ),
               const SizedBox(height: 20),
+
               const Text(
                 "Education Level",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
+
               const SizedBox(height: 8),
               _buildDropdown(
                 hint: "Select education level",
@@ -193,11 +202,28 @@ class _SetupProfileState extends State<SetupProfile> {
                   ),
                 ),
               ],
+              if (appearedExam) ...[
+                const SizedBox(height: 20),
+                const Text("Exam", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+                const SizedBox(height: 20),
+                _buildDropdown(
+                  hint: "Select Exam",
+                  icon: Icons.school_rounded,
+                  value: selectedExam,
+                  items: ["JEE", "NEET", "JEE Main", "NEET Main"],
+                  onChanged: (val) => setState(() => selectedExam = val),
+                ),
+                const SizedBox(height: 20),
+                _buildTextFieldPhone(hint: "Enter your marks", icon: Icons.grade_rounded)
+              ],
+
               const SizedBox(height: 20),
+
               const Text(
                 "Marks",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
+
               const SizedBox(height: 8),
               _buildDropdown(
                 hint: "Select Marks",
@@ -254,6 +280,28 @@ class _SetupProfileState extends State<SetupProfile> {
     return TextField(
       decoration: InputDecoration(
         hintText: hint,
+        hintStyle: TextStyle(color: Colors.grey[600]),
+        prefixIcon: Icon(icon, color: Colors.blueAccent),
+        filled: true,
+        fillColor: Colors.grey[100],
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.blueAccent, width: 1.5),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextFieldPhone({required String hint, required IconData icon}) {
+    return TextField(
+      keyboardType: TextInputType.phone,
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(color: Colors.grey[600]),
         prefixIcon: Icon(icon, color: Colors.blueAccent),
         filled: true,
         fillColor: Colors.grey[100],
